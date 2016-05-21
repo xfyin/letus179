@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resin xmlns="http://caucho.com/ns/resin" xmlns:resin="urn:java:com.caucho.resin">
+	<log-handler name="" level="all" path="stdout:" timestamp="[%y-%m-%d %H:%M:%S.%s] {%{thread}} " />
+
+	<!-- - level='info' for production - 'fine' or 'finer' for development and troubleshooting -->
+	<logger name="com.caucho" level="info" />
+	<logger name="com.caucho.java" level="config" />
+	<logger name="com.caucho.loader" level="config" />
+
+	<class-loader>
+		<tree-loader path="${resin.root}/ext-lib" />
+	</class-loader>
+	
+	<cluster id="app-tier">
+		<!-- 该处填写解压后resin文件夹中的app-default.xml文件的绝对路径 -->
+		<resin:import path="${resin.home}/conf/app-default.xml" />
+		<server id="" >
+			<http port="8080" />
+		</server>
+		<!-- 该处填写eclipse生成项目的地址('\'符号不需要转译成'/') -->
+		<host id="" root-directory="G:\workspace\letus179">
+			<web-app id="/letus179" root-directory="src/main/webapp" />
+        <access-log path-format="G:/resin-4.0.35/logs/letus179_access.log.%Y%m%d"
+            format='%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"'
+            rollover-period="1D"/>
+		</host>
+	</cluster>
+</resin>
