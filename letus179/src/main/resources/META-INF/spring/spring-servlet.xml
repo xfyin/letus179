@@ -11,9 +11,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
+	<!-- 扫描spring注解组件 ，包括子集 -->
+	<context:component-scan base-package="com.letus179" />
+
 	<!-- 支持对象与json的转换。 -->
 	<mvc:annotation-driven />
-
+	
 	<!-- 用来处理json格式转换 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
@@ -37,7 +40,7 @@
 	<!-- 通用视图解析类 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/pages/" />
+		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp" />
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView" />

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 13:42:21 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+	<class name="com.letus179.commons.entity.Citys" table="citys">
+		<id name="id">
+			<column name="id"></column>
+			<generator class="native"></generator>
+		</id>
+		<property name="cityId">
+			<column name="cityId"></column>
+		</property>
+		<property name="city">
+			<column name="city"></column>
+		</property>
+		<property name="provinceId">
+			<column name="provinceId"></column>
+		</property>
+		<property name="isShow">
+			<column name="isShow"></column>
+		</property>
+	</class>
+</hibernate-mapping>

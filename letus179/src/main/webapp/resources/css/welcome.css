@@ -1,0 +1,17 @@
+.first {
+	text-align: center;
+	margin-top: 6.5%
+}
+.first .name {
+	color:red;
+	font-weight:bold;
+}
+.times {
+	color: red;
+}
+.second {
+	height:30%;
+	width:95%;
+	text-align: center;
+	margin-bottom: 6.0%;
+}

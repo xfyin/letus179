@@ -18,7 +18,7 @@
 			<http port="8080" />
 		</server>
 		<!-- 该处填写eclipse生成项目的地址('\'符号不需要转译成'/') -->
-		<host id="" root-directory="G:\workspace\letus179">
+		<host id="" root-directory="G:\letus179\179\letus179">
 			<web-app id="/letus179" root-directory="src/main/webapp" />
         <access-log path-format="G:/resin-4.0.35/logs/letus179_access.log.%Y%m%d"
             format='%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"'

@@ -1,0 +1,101 @@
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+	background-color: #EEE5DE;
+}
+
+ul {
+	list-style: none;
+}
+
+ul li {
+	color: white;
+	float: right;
+	margin-right: 5px;
+	float: right;
+}
+
+ul li a {
+	color: white;
+}
+
+ul li span {
+	font-size: 20px;
+	color: white;
+}
+
+#mySearch {
+	width: 400px;
+}
+
+.navbar-form {
+	margin-left: 182px;!important
+}
+
+.modal-dialog {
+	width: 500px;!important
+}
+
+.modal-body {
+	height: 220px;
+	text-align: center;
+	vertical-align: middle;
+}
+.loginAbout {
+	font-size: 13px;
+	color: #337ab7
+}
+.nextLogin {
+ float: left;
+ text-align: left; 
+ padding-left: 80px;
+ font-weight: -10!important
+}
+.forgetPwd {
+	float:right;
+	text-align: right;
+}
+.forgetPwd a{
+	padding-right: 66px;
+	color: #CDAA7D;
+	font-weight: 40px;
+}
+.modal-footer {
+	text-align:center; 
+	padding-right: 50px;
+}
+.modal-footer button{
+	width: 130px
+}
+.form-control-feedback{
+	left:900px;
+	margin-top: 10px;
+}
+.remeberMe {
+	color: #CDAA7D;
+	font-size: 12px;!important
+}
+.modal-header {
+	background-color: #8B864E;
+}
+.modal-body {
+	background-color:#EAEAEA;
+}
+.modal-body input {
+	background-color:#FAFAFA;
+}
+.modal-footer {
+	background-color: #8B864E;
+}
+
+.modal-footer button{
+	background-color: #8B7355;
+	border-color: #8B8378;
+}
+.modal-footer button:focus, .modal-footer button:hover{
+	background-color: #8B6508;
+}
+.modal-footer button:active, .modal-footer button.active {
+	background-color: #8B6508;!important
+	border-color: #8B8378;
+}

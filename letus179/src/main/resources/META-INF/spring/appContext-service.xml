@@ -10,8 +10,8 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 		
-  <bean id="dtbProjectService" class="com.fang.txdai.dtb.project.service.DTBProjectServiceImpl">
-    <property name="dtbProjectDao" ref="dtbProjectDao"></property>
+  <bean id="userService" class="com.letus179.user.service.UserServiceImpl">
+    <property name="userDao" ref="userDao"/>
   </bean>
 
  

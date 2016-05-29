@@ -1,78 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>letus179</display-name>
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
-  
-  <!-- 容器对于web.xml的加载过程是context-param >> listener  >> fileter  >> servlet -->
-  
-  <context-param>
-    <param-name>contextConfigLocation</param-name>
-    <param-value>classpath*:META-INF/spring/spring-root.xml</param-value>
-  </context-param>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>letus179</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
-  <context-param>
-    <param-name>logbackConfigLocation</param-name>
-    <param-value>WEB-INF/logconf/logback.xml</param-value>
-  </context-param>
-  
- <!--  <listener>
-    <listener-class>com.fang.bdp.core.web.listener.MySpringContextLoaderListener</listener-class>
-  </listener> -->
+	<!-- 容器对于web.xml的加载过程是context-param >> listener >> filter >> servlet,与具体位置无关，同一个filter下多个filter-mapping，按照顺序加载 -->
 
-  <listener>
-    <listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
-  </listener>
-  
-  <filter>
-    <filter-name>characterEncodingFilter</filter-name>
-    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>utf-8</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>characterEncodingFilter</filter-name>
-    <url-pattern>*.do</url-pattern>
-  </filter-mapping>
-  
-  <!-- <filter>
-    <filter-name>shiroFilter</filter-name>
-    <filter-class>com.fang.bdp.core.web.security.MyShiroFilter</filter-class>
-    <init-param>
-      <param-name>targetFilterLifecycle</param-name>
-      <param-value>true</param-value>
-    </init-param>
-  </filter>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:META-INF/spring/spring-root.xml</param-value>
+	</context-param>
 
-  <filter-mapping>
-    <filter-name>shiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping> -->
-  <!-- 
-  <filter>
-      <filter-name>OpenSessionInView</filter-name>
-      <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
-  </filter>
-  <filter-mapping>
-      <filter-name>OpenSessionInView</filter-name>
-      <url-pattern>*.do</url-pattern>
-  </filter-mapping> -->
-  
-  
-  <servlet>
-    <servlet-name>dispatcherServlet</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath*:META-INF/spring/spring-servlet.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>dispatcherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
+	<context-param>
+		<param-name>logbackConfigLocation</param-name>
+		<param-value>WEB-INF/logconf/logback.xml</param-value>
+	</context-param>
+
+	<!-- 在启动Web 容器时，自动装配Spring spring-root(appContext-*.xml) 的配置信息 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>ch.qos.logback.ext.spring.web.LogbackConfigListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
+	<!-- shiro过滤器， DelegatingFilterProxy通过代理模式将spring容器中的bean和filter关联起来 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<!-- true 由servlet容器控制filter的生命周期 -->
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+	   <filter-name>OpenSessionInViewFilter</filter-name>
+	   <filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+	   <init-param>
+		    <param-name>sessionFactoryBeanName</param-name>
+		    <param-value>sessionFactory</param-value>
+	   </init-param>
+	   <init-param>
+        <param-name>singleSession</param-name>
+        <param-value>true</param-value>           
+     </init-param>
+     <init-param>
+        <param-name>flushMode</param-name>
+  	 		<param-value>AUTO </param-value>        
+     </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenSessionInViewFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	
+	
+	
+	
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath*:META-INF/spring/spring-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 </web-app>

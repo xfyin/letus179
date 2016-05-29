@@ -6,12 +6,11 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 	<!-- 读取数据库,邮件等配置信息 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -68,9 +67,6 @@
 			<list> <ref bean="stat-filter" /> </list> </property> -->
 	</bean>
 
-
-
-
 	<bean id="commonDaoSupport" class="com.letus179.commons.dao.CommonDaoSupport">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
@@ -84,25 +80,11 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation"
-			value="classpath:cn/ioyou/hibernate/hibernate.cfg.xml" />
+		<property name="configLocation" value="classpath:com/letus179/hbm/hibernate.cfg.xml" />
 		<property name="mappingLocations">
 			<list>
 				<value>classpath:com/letus179/hbm/*.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
-
-
-
-
-
-
-
-
-
-
-
-
-
 </beans>

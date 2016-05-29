@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-25 13:42:21 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.letus179.commons.entity.User" table="user">
+        <id name="id" type="string">
+            <column name="id" length="32" />
+            <generator class="assigned" />
+        </id>
+        <property name="realName" type="string">
+            <column name="realName" length="50" not-null="true">
+            </column>
+        </property>
+        <property name="username" type="string">
+            <column name="username" length="50" not-null="true">
+            </column>
+        </property>
+        <property name="password" type="string">
+            <column name="password" not-null="true">
+            </column>
+        </property>
+        <property name="salt" type="java.lang.Integer">
+            <column name="salt" not-null="true">
+            </column>
+        </property>
+        <property name="locked" type="int">
+            <column name="locked" not-null="true">
+            </column>
+        </property>
+        <property name="age" type="java.lang.Integer">
+            <column name="age">
+            </column>
+        </property>
+        <property name="loveStatus" type="java.lang.Integer">
+            <column name="loveStatus">
+            </column>
+        </property>
+        <property name="gender" type="java.lang.Integer">
+            <column name="gender">
+            </column>
+        </property>
+        <property name="signature" type="string">
+            <column name="signature" length="65535">
+            </column>
+        </property>
+        <property name="idCard" type="string">
+            <column name="idCard">
+            </column>
+        </property>
+        <property name="phone" type="string">
+            <column name="phone">
+            </column>
+        </property>
+        <property name="email" type="string">
+            <column name="email">
+            </column>
+        </property>
+        <property name="headUrl" type="string">
+            <column name="headUrl" length="65535">
+            </column>
+        </property>
+        <property name="birthday" type="timestamp">
+            <column name="birthday" length="19">
+            </column>
+        </property>
+        <property name="isPhoneVerify" type="java.lang.Integer">
+            <column name="IsPhoneVerify">
+            </column>
+        </property>
+        <property name="degreeType" type="java.lang.Integer">
+            <column name="degreeType">
+            </column>
+        </property>
+        <property name="createTime" type="timestamp">
+            <column name="createTime" length="19">
+            </column>
+        </property>
+        <property name="updateTime" type="timestamp">
+            <column name="updateTime" length="19">
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
