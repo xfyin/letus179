@@ -109,6 +109,21 @@ public class User implements java.io.Serializable {
    */
   private Date updateTime;
   
+  /**
+   * 省
+   */
+  private String province;
+  
+  /**
+   * 城市
+   */
+  private String city;
+  
+  /**
+   * 区
+   */
+  private String district;
+  
   public User() {
   }
   
@@ -140,11 +155,15 @@ public class User implements java.io.Serializable {
    * @param degreeType
    * @param createTime
    * @param updateTime
+   * @param province
+   * @param city
+   * @param district
    */
   public User(String id, String realName, String username, String password, int salt, int locked,
       Integer age, Integer loveStatus, Integer gender, String signature, String idCard,
       String phone, String email, String headUrl, Date birthday, Integer isPhoneVerify,
-      Integer degreeType, Date createTime, Date updateTime) {
+      Integer degreeType, Date createTime, Date updateTime, String province, String city,
+      String district) {
     super();
     this.id = id;
     this.realName = realName;
@@ -165,6 +184,9 @@ public class User implements java.io.Serializable {
     this.degreeType = degreeType;
     this.createTime = createTime;
     this.updateTime = updateTime;
+    this.province = province;
+    this.city = city;
+    this.district = district;
   }
   
   /**
@@ -431,6 +453,48 @@ public class User implements java.io.Serializable {
    */
   public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
+  }
+  
+  /**
+   * @return province
+   */
+  public String getProvince() {
+    return province;
+  }
+  
+  /**
+   * @param province set province
+   */
+  public void setProvince(String province) {
+    this.province = province;
+  }
+  
+  /**
+   * @return city
+   */
+  public String getCity() {
+    return city;
+  }
+  
+  /**
+   * @param city set city
+   */
+  public void setCity(String city) {
+    this.city = city;
+  }
+  
+  /**
+   * @return district
+   */
+  public String getDistrict() {
+    return district;
+  }
+  
+  /**
+   * @param district set district
+   */
+  public void setDistrict(String district) {
+    this.district = district;
   }
   
 }

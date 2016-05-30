@@ -5,7 +5,7 @@ ms_DatePicker: function (options) {
                 YearSelector: "#sel_year",
                 MonthSelector: "#sel_month",
                 DaySelector: "#sel_day",
-                FirstText: "--",
+                FirstText: "-",
                 FirstValue: 0
             };
             var opts = $.extend({}, defaults, options);

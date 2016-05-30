@@ -80,5 +80,17 @@
             <column name="updateTime" length="19">
             </column>
         </property>
+        <property name="province" type="string">
+            <column name="province">
+            </column>
+        </property>
+        <property name="city" type="string">
+            <column name="city">
+            </column>
+        </property>
+        <property name="district" type="string">
+            <column name="district">
+            </column>
+        </property>
     </class>
 </hibernate-mapping>

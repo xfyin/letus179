@@ -267,3 +267,9 @@ form.forgot_password{
 	height:5px;
 	text-align: center;
 }
+.province, city {
+	width:50px;
+}
+.district {
+	width:100px;
+}

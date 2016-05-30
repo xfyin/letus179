@@ -11,6 +11,7 @@
 	href="${pageContext.request.contextPath }/resources/css/register.css"
 	rel="stylesheet">
 <script src="${pageContext.request.contextPath }/resources/js/birthday.js"></script>
+<script src="${pageContext.request.contextPath }/resources/js/procitydis.js"></script>
 <title>注册 letus179账号</title>
 <script type="text/javascript">
 $(function(){ 
@@ -19,6 +20,7 @@ $(function(){
             MonthSelector: ".sel_month", 
             DaySelector: ".sel_day" 
     }); 
+    setup();
 });
 function valpwd(){
 	var pwd=document.getElementById("pwd").value;
@@ -158,11 +160,19 @@ var result = ${"success"};
 						</tr>
 						<tr>
 							<td class="reg"><span style="color: red">*</span>出生日期</td>
-							<td class="reg_put"><select class="sel_year" name="b_year"
-								rel="-">
-							</select>&nbsp;年 <select class="sel_month" name="b_month" rel="-">
-							</select>&nbsp;月 <select class="sel_day" name="b_day" rel="-">
-							</select>&nbsp;日</td>
+							<td class="reg_put">
+								<select class="sel_year" name="b_year" rel="-"></select>&nbsp;年 &nbsp;&nbsp;
+								<select class="sel_month" name="b_month" rel="-"></select>&nbsp;月 &nbsp;&nbsp;
+								<select class="sel_day" name="b_day" rel="-"></select>&nbsp;日&nbsp;
+							</td>
+						</tr>
+						<tr>
+							<td class="reg"><span style="color: red">*</span>所在地</td>
+							<td class="reg_put">
+								<select class="province" name="province" id="province" rel="-"></select> 
+								<select class="city" name="city" id="city" rel="-"></select>
+								<select class="district" name="district" id="district" rel="-"></select>
+							</td>
 						</tr>
 						<tr>
 							<td class="reg">Email</td>

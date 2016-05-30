@@ -54,6 +54,9 @@ public class RegisterController {
     String birthdayDay = request.getParameter("b_day");
     String phoneNum = request.getParameter("phone");
     String email = request.getParameter("email");
+    String province = request.getParameter("province");
+    String city = request.getParameter("city");
+    String district = request.getParameter("district");
     User user = new User();
     user.setId(StringUtils.get32UUID());
     user.setRealName(realName);
@@ -64,6 +67,9 @@ public class RegisterController {
     user.setPassword(Md5Util.md5(password, salt));
     user.setPhone(phoneNum);
     user.setEmail(email);
+    user.setProvince(province);
+    user.setCity(city);
+    user.setDistrict(district);
     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Date birthday = null;
     try {
