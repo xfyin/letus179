@@ -60,5 +60,11 @@ public class UserDaoImpl implements UserDao {
   public void modifyUser(User user) {
     commonDaoSupport.update(user);
   }
+
+  @Override
+  public long countUser() {
+    String hql = "select count(*) from User";
+    return (long) commonDaoSupport.getSession().createQuery(hql).uniqueResult();
+  }
   
 }

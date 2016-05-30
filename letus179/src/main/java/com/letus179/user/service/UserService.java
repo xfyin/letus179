@@ -43,4 +43,11 @@ public interface UserService {
    * @return 认证通过后用户信息
    */
   ActiveUser authenticat(String username, String password);
+  
+  /**
+   * 获取用户数
+   * @return 用户数
+   */
+  long countUser();
+  
 }

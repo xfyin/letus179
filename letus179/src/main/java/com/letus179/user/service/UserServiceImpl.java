@@ -110,5 +110,10 @@ public class UserServiceImpl implements UserService {
     activeUser.setGender(sex);
     return activeUser;
   }
+
+  @Override
+  public long countUser() {
+    return userDao.countUser();
+  }
   
 }

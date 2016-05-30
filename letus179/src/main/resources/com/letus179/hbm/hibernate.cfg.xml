@@ -9,8 +9,8 @@
        <property name="hibernate.connection.password">4240336</property>
        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/letus</property>
        <property name="hibernate.connection.username">root</property>
-       <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property> -->
-       
+       <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        -->
 	    <!-- SQL diale	ct -->
 	    <!--dialect 只是Hibernate使用的数据库方言,就是要用Hibernate连接那种类型的数据库服务器。--> 
 	    <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>

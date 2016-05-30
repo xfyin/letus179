@@ -1,6 +1,6 @@
 package com.letus179.commons.entity;
 
-// Generated 2016-5-25 13:42:21 by Hibernate Tools 4.0.0
+// Generated 2016-5-30 17:52:43 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 
@@ -10,126 +10,62 @@ import java.util.Date;
 public class User implements java.io.Serializable {
   
   /**
-   * 序号
+   * 
    */
   private static final long serialVersionUID = 1L;
   
-  /**
-   * 主键id
-   */
   private String id;
   
-  /**
-   * 用户真实姓名
-   */
   private String realName;
   
-  /**
-   * 用户名
-   */
   private String username;
   
-  /**
-   * 密码
-   */
   private String password;
   
-  /**
-   * 盐
-   */
   private int salt;
   
-  /**
-   * 账号是否被锁（）
-   */
   private int locked;
   
-  /**
-   * 年龄
-   */
   private Integer age;
   
-  /**
-   * 感情状态
-   */
   private Integer loveStatus;
   
-  /**
-   * 性别
-   */
   private Integer gender;
   
-  /**
-   * 个性签名
-   */
   private String signature;
   
-  /**
-   * 身份证
-   */
   private String idCard;
   
-  /**
-   * 手机号
-   */
   private String phone;
   
-  /**
-   * 邮箱
-   */
   private String email;
   
-  /**
-   * 头像地址
-   */
   private String headUrl;
   
-  /**
-   * 生日
-   */
   private Date birthday;
   
-  /**
-   * 手机号是否验证
-   */
   private Integer isPhoneVerify;
   
-  /**
-   * 学历
-   */
   private Integer degreeType;
   
-  /**
-   * 创建时间
-   */
   private Date createTime;
   
-  /**
-   * 更新时间
-   */
   private Date updateTime;
   
-  /**
-   * 省
-   */
   private String province;
   
-  /**
-   * 城市
-   */
   private String city;
   
-  /**
-   * 区
-   */
   private String district;
+  
+  private Statisticalaccess statisticalaccess;
   
   public User() {
   }
   
-  public User(String id, String username, String password, int salt, int locked) {
+  public User(String id, String realName, String password, int salt, int locked) {
     this.id = id;
-    this.username = username;
+    this.realName = realName;
     this.password = password;
     this.salt = salt;
     this.locked = locked;
@@ -137,6 +73,7 @@ public class User implements java.io.Serializable {
   
   /**
    * @param id
+   * @param statisticalaccess
    * @param realName
    * @param username
    * @param password
@@ -189,30 +126,18 @@ public class User implements java.io.Serializable {
     this.district = district;
   }
   
-  /**
-   * @return id
-   */
   public String getId() {
-    return id;
+    return this.id;
   }
   
-  /**
-   * @param id set id
-   */
   public void setId(String id) {
     this.id = id;
   }
   
-  /**
-   * @return realName
-   */
   public String getRealName() {
-    return realName;
+    return this.realName;
   }
   
-  /**
-   * @param realName set realName
-   */
   public void setRealName(String realName) {
     this.realName = realName;
   }
@@ -231,270 +156,170 @@ public class User implements java.io.Serializable {
     this.username = username;
   }
   
-  /**
-   * @return password
-   */
   public String getPassword() {
-    return password;
+    return this.password;
   }
   
-  /**
-   * @param password set password
-   */
   public void setPassword(String password) {
     this.password = password;
   }
   
-  /**
-   * @return salt
-   */
   public int getSalt() {
-    return salt;
+    return this.salt;
   }
   
-  /**
-   * @param salt set salt
-   */
   public void setSalt(int salt) {
     this.salt = salt;
   }
   
-  /**
-   * @return locked
-   */
   public int getLocked() {
-    return locked;
+    return this.locked;
   }
   
-  /**
-   * @param locked set locked
-   */
   public void setLocked(int locked) {
     this.locked = locked;
   }
   
-  /**
-   * @return age
-   */
   public Integer getAge() {
-    return age;
+    return this.age;
   }
   
-  /**
-   * @param age set age
-   */
   public void setAge(Integer age) {
     this.age = age;
   }
   
-  /**
-   * @return loveStatus
-   */
   public Integer getLoveStatus() {
-    return loveStatus;
+    return this.loveStatus;
   }
   
-  /**
-   * @param loveStatus set loveStatus
-   */
   public void setLoveStatus(Integer loveStatus) {
     this.loveStatus = loveStatus;
   }
   
-  /**
-   * @return gender
-   */
   public Integer getGender() {
-    return gender;
+    return this.gender;
   }
   
-  /**
-   * @param gender set gender
-   */
   public void setGender(Integer gender) {
     this.gender = gender;
   }
   
-  /**
-   * @return signature
-   */
   public String getSignature() {
-    return signature;
+    return this.signature;
   }
   
-  /**
-   * @param signature set signature
-   */
   public void setSignature(String signature) {
     this.signature = signature;
   }
   
-  /**
-   * @return idCard
-   */
   public String getIdCard() {
-    return idCard;
+    return this.idCard;
   }
   
-  /**
-   * @param idCard set idCard
-   */
   public void setIdCard(String idCard) {
     this.idCard = idCard;
   }
   
-  /**
-   * @return phone
-   */
   public String getPhone() {
-    return phone;
+    return this.phone;
   }
   
-  /**
-   * @param phone set phone
-   */
   public void setPhone(String phone) {
     this.phone = phone;
   }
   
-  /**
-   * @return email
-   */
   public String getEmail() {
-    return email;
+    return this.email;
   }
   
-  /**
-   * @param email set email
-   */
   public void setEmail(String email) {
     this.email = email;
   }
   
-  /**
-   * @return headUrl
-   */
   public String getHeadUrl() {
-    return headUrl;
+    return this.headUrl;
   }
   
-  /**
-   * @param headUrl set headUrl
-   */
   public void setHeadUrl(String headUrl) {
     this.headUrl = headUrl;
   }
   
-  /**
-   * @return birthday
-   */
   public Date getBirthday() {
-    return birthday;
+    return this.birthday;
   }
   
-  /**
-   * @param birthday set birthday
-   */
   public void setBirthday(Date birthday) {
     this.birthday = birthday;
   }
   
-  /**
-   * @return isPhoneVerify
-   */
   public Integer getIsPhoneVerify() {
-    return isPhoneVerify;
+    return this.isPhoneVerify;
   }
   
-  /**
-   * @param isPhoneVerify set isPhoneVerify
-   */
   public void setIsPhoneVerify(Integer isPhoneVerify) {
     this.isPhoneVerify = isPhoneVerify;
   }
   
-  /**
-   * @return degreeType
-   */
   public Integer getDegreeType() {
-    return degreeType;
+    return this.degreeType;
   }
   
-  /**
-   * @param degreeType set degreeType
-   */
   public void setDegreeType(Integer degreeType) {
     this.degreeType = degreeType;
   }
   
-  /**
-   * @return createTime
-   */
   public Date getCreateTime() {
-    return createTime;
+    return this.createTime;
   }
   
-  /**
-   * @param createTime set createTime
-   */
   public void setCreateTime(Date createTime) {
     this.createTime = createTime;
   }
   
-  /**
-   * @return updateTime
-   */
   public Date getUpdateTime() {
-    return updateTime;
+    return this.updateTime;
   }
   
-  /**
-   * @param updateTime set updateTime
-   */
   public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
   }
   
-  /**
-   * @return province
-   */
   public String getProvince() {
-    return province;
+    return this.province;
   }
   
-  /**
-   * @param province set province
-   */
   public void setProvince(String province) {
     this.province = province;
   }
   
-  /**
-   * @return city
-   */
   public String getCity() {
-    return city;
+    return this.city;
   }
   
-  /**
-   * @param city set city
-   */
   public void setCity(String city) {
     this.city = city;
   }
   
-  /**
-   * @return district
-   */
   public String getDistrict() {
-    return district;
+    return this.district;
+  }
+  
+  public void setDistrict(String district) {
+    this.district = district;
   }
   
   /**
-   * @param district set district
+   * @return statisticalaccess
    */
-  public void setDistrict(String district) {
-    this.district = district;
+  public Statisticalaccess getStatisticalaccess() {
+    return statisticalaccess;
+  }
+  
+  /**
+   * @param statisticalaccess set statisticalaccess
+   */
+  public void setStatisticalaccess(Statisticalaccess statisticalaccess) {
+    this.statisticalaccess = statisticalaccess;
   }
   
 }

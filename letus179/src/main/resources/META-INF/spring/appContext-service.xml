@@ -13,6 +13,9 @@
   <bean id="userService" class="com.letus179.user.service.UserServiceImpl">
     <property name="userDao" ref="userDao"/>
   </bean>
+  <bean id="statisticalAccessService" class="com.letus179.statistical.statisticalAccess.service.StatisticalAccessServiceImpl">
+    <property name="statisticalAccessDao" ref="statisticalAccessDao"/>
+  </bean>
 
  
 </beans>

@@ -35,4 +35,10 @@ public interface UserDao {
    */
   void modifyUser(User user);
   
+  /**
+   * 获取用户数
+   * @return 用户数
+   */
+  long countUser();
+  
 }

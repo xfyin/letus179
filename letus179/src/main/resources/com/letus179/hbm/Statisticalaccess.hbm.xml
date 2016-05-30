@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-30 17:52:43 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+	<class name="com.letus179.commons.entity.Statisticalaccess"
+		table="statisticalaccess" catalog="letus">
+		<id name="id" type="string">
+			<column name="id" length="32" />
+			<generator class="assigned" />
+		</id>
+		<property name="visitTimes" type="int">
+			<column name="visitTimes" not-null="true">
+				<comment>&#183;&#195;&#206;&#202;&#180;&#206;&#202;&#253;</comment>
+			</column>
+		</property>
+		<property name="lastVisitTime" type="timestamp">
+			<column name="lastVisitTime" length="19" not-null="true">
+				<comment>&#215;&#238;&#186;&#243;&#183;&#195;&#206;&#202;&#202;&#177;&#188;&#228;</comment>
+			</column>
+		</property>
+		<property name="liveness" type="int">
+			<column name="liveness" not-null="true">
+				<comment>&#187;&#238;&#212;&#190;&#182;&#200;
+					&#163;&#168;&#211;&#195;&#183;&#195;&#206;&#202;&#180;&#206;&#202;&#253;/&#215;&#220;&#183;&#195;&#206;&#202;&#180;&#206;&#202;&#253;&#163;&#169;</comment>
+			</column>
+		</property>
+		<property name="number" type="int">
+			<column name="number" not-null="true">
+				<comment>&#181;&#218;&#188;&#184;&#206;&#187;&#211;&#195;&#187;&#167;
+					&#163;&#168;&#181;&#218;&#210;&#187;&#180;&#206;&#215;&#162;&#178;&#225;&#202;&#177;&#213;&#185;&#202;&#190;&#163;&#169;</comment>
+			</column>
+		</property>
+		<property name="createTime" type="timestamp">
+			<column name="createTime" length="19" not-null="true">
+				<comment>&#180;&#180;&#189;&#168;&#202;&#177;&#188;&#228;</comment>
+			</column>
+		</property>
+		<property name="updateTime" type="timestamp">
+			<column name="updateTime" length="19" not-null="true">
+				<comment>&#184;&#252;&#208;&#194;&#202;&#177;&#188;&#228;</comment>
+			</column>
+		</property>
+		<many-to-one name="user"
+			class="com.letus179.commons.entity.User" fetch="select"
+			cascade="all" unique="true">
+			<column name="userId" length="32" not-null="true">
+				<comment>&#211;&#195;&#187;&#167;&#195;&#251;</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

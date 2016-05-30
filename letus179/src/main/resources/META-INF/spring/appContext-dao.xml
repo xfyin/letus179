@@ -13,6 +13,9 @@
   <bean id="userDao" class="com.letus179.user.dao.UserDaoImpl">
     <property name="commonDaoSupport" ref="commonDaoSupport"></property>
   </bean>
+  <bean id="statisticalAccessDao" class="com.letus179.statistical.statisticalAccess.dao.StatisticalAccessDaoImpl">
+    <property name="commonDaoSupport" ref="commonDaoSupport"></property>
+  </bean>
 
   
 </beans>
