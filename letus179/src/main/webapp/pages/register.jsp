@@ -68,7 +68,7 @@ var result = ${"success"};
 	</nav>
 
 	<!-- 登录Modal -->
-	<form class="navbar-form navbar-right" action="${pageContext.request.contextPath }/login/autoLogin.do">
+	<form class="navbar-form navbar-right" action="${pageContext.request.contextPath }/login/autoLogin.do" method="post">
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">

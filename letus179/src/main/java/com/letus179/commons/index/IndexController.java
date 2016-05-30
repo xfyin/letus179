@@ -7,6 +7,8 @@
  */
 package com.letus179.commons.index;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
@@ -26,11 +28,13 @@ public class IndexController {
   
   //系统首页
   @RequestMapping("/index")
-  public String index(Model model) {
-    Subject subject = SecurityUtils.getSubject();
-    ActiveUser user = (ActiveUser) subject.getPrincipal();
-    model.addAttribute("user", user);
-    return "login";
+  public String index(HttpServletRequest request,Model model) {
+    /*Subject subject = SecurityUtils.getSubject();
+    ActiveUser user = (ActiveUser) subject.getPrincipal();*/
+    /*model.addAttribute("user", user);*/
+    String username = request.getParameter("username");
+    model.addAttribute("username", username);
+    return "index";
   }
   
   //欢迎页面

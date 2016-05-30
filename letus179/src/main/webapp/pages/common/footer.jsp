@@ -23,7 +23,7 @@
 					<td>&copy; Letus179| <a
 						href="${pageContext.request.contextPath}/aboutus.jsp">关于我们</a> | <a
 						href="mailto:xfyin179@163.com">广告联系</a> | <a target="_blank"
-						href="http://weibo.com/">@新浪微博</a>
+						href="https://github.com/xfyin/letus179">@github</a>
 					</td>
 				</tr>
 				<tr class="copyRight" style="text-align: center;">

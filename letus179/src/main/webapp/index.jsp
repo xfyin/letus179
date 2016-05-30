@@ -15,10 +15,22 @@
 	rel="stylesheet">
 <title>让我们一起走吧-随时随地随心情</title>
 <script type="text/javascript">
+$(function(){
+		var name = $(".welcomeName").text();
+		if (name.trim() != "") {
+			document.getElementById("welcomeInfo").style.display="block";
+			document.getElementById("loginInfo").style.display="none";
+			document.getElementById("info").style.display="none";
+			document.getElementById("registerInfo").style.display="none";
+			document.getElementById("logoutInfo").style.display="block";
+		}
+	
 	function search() {
 		//检索  ajax	
 		//href="${pageContext.request.contextPath}/search/search.do"
 	}
+	
+});
 </script>
 </head>
 <body>
@@ -49,18 +61,22 @@
 			</div>
 			<div>
 				<ul class="form-group navbar-form navbar-right">
-					<li>
-						<!-- Button trigger modal -->
+					<li id="loginInfo">
 						<button type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#myModal">登录</button>
+							data-toggle="modal" data-target="#myModal" >登录</button>
 					</li>
-					<li><span>|</span></li>
-					<li class="btn btn-primary btn-sm"><a
+					<li id="info"><span>|</span></li>
+					<li class="btn btn-primary btn-sm" id="registerInfo"><a
 						href="${pageContext.request.contextPath }/pages/register.jsp"
 						target="_top">注册</a></li>
-					<li><label class="">欢迎您：<span class="name">${user.username
-								}</span>&nbsp;${user.gender}
-					</label></li>
+					<li>
+						<label class="logoutInfo" id="logoutInfo">
+							<a href="${pageContext.request.contextPath }/index.jsp">退出</a>
+						</label>
+					</li>
+					<li>
+					<label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName">${username}&nbsp;&nbsp;</span></label>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -70,7 +86,7 @@
 
 	<!-- 登录Modal -->
 	<form class="navbar-form navbar-right"
-		action="${pageContext.request.contextPath}/login/autoLogin.do">
+		action="${pageContext.request.contextPath}/login/autoLogin.do" method="post">
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">

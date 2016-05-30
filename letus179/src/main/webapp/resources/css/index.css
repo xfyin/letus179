@@ -99,3 +99,14 @@ ul li span {
 	background-color: #8B6508;!important
 	border-color: #8B8378;
 }
+.welcomeInfo, .logoutInfo {
+	display: none;
+}
+.welcomeName,.welcomeInfo,.logoutInfo  {
+	font-size:12px;
+	padding-top: 5px;
+}
+.welcomeName {
+	color: red;
+	font-weight: bold;
+}

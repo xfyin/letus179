@@ -22,7 +22,7 @@
 			second--;
 			document.getElementById("times").innerHTML = second;
 		} else {
-			location.href = "${pageContext.request.contextPath }/index.jsp";
+			location.href = "${pageContext.request.contextPath }/index/index.do?username=${user.username}";
 		}
 		setTimeout('calc()', 1000);
 	}
@@ -31,9 +31,9 @@
 <body onload="calc();">
 	<div class="first"> 欢迎归来： 
 		<span class="name">${user.username }</span>&nbsp;${user.gender}, 
-		<a href="${pageContext.request.contextPath }/index.jsp">让我们一起走吧!</a> 倒计时: 
+		<a href="${pageContext.request.contextPath }/index/index.do?username=${user.username}">让我们一起走吧!</a> 倒计时: 
 		<span id="times" class="times">5</span><span  class="times" >s</span> 
-		跳转...或者直接点击 <a href="${pageContext.request.contextPath }/index.jsp">进入</a>
+		跳转...或者直接点击 <a href="${pageContext.request.contextPath }/index/index.do?username=${user.username}">进入</a>
 	</div>
 	<div class="second">
 		<img alt="welcome"
