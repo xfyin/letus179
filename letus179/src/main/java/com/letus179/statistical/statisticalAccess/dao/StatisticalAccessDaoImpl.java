@@ -30,10 +30,10 @@ public class StatisticalAccessDaoImpl implements StatisticalAccessDao {
   }
   
   @Override
-  public Statisticalaccess getAccessByUsername(String username) {
-    String hql = "from Statisticalaccess where username = :username";
+  public Statisticalaccess getAccessByUserId(String userId) {
+    String hql = "from Statisticalaccess s where s.user.id = :userId";
     return (Statisticalaccess) commonDaoSupport.getSession().createQuery(hql)
-        .setString("username", username).uniqueResult();
+        .setString("userId", userId).uniqueResult();
   }
   
   @Override
@@ -53,7 +53,13 @@ public class StatisticalAccessDaoImpl implements StatisticalAccessDao {
   
   @Override
   public void updateAccess(Statisticalaccess access) {
-    commonDaoSupport.update(access);
+    Session session = commonDaoSupport.getSession();
+    Transaction transaction = session.beginTransaction();
+    commonDaoSupport.getSession().update(access);
+    session.flush();
+    transaction.commit();
   }
+
+  
   
 }

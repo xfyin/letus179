@@ -12,7 +12,6 @@ import com.letus179.statistical.statisticalAccess.dao.StatisticalAccessDao;
 import com.letus179.util.LS179Logger;
 import com.letus179.util.StringUtils;
 
-
 /**
  * service实现
  *
@@ -28,14 +27,14 @@ public class StatisticalAccessServiceImpl implements StatisticalAccessService {
   public void setStatisticalAccessDao(StatisticalAccessDao statisticalAccessDao) {
     this.statisticalAccessDao = statisticalAccessDao;
   }
-
+  
   @Override
-  public Statisticalaccess getAccessByUsername(String username) {
-    if (StringUtils.isBlank(username)) {
-      LS179Logger.error("用户名为空");
-      throw new RuntimeException("用户名为空");
+  public Statisticalaccess getAccessByUserId(String userId) {
+    if (StringUtils.isBlank(userId)) {
+      LS179Logger.error("用户id为空");
+      throw new RuntimeException("用户id为空");
     }
-    return statisticalAccessDao.getAccessByUsername(username);
+    return statisticalAccessDao.getAccessByUserId(userId);
   }
   
   @Override

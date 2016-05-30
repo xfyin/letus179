@@ -66,20 +66,14 @@ public class RegisterController {
     Statisticalaccess access = new Statisticalaccess();
     //获取用户总数
     long count = userService.countUser();
-    //获取所有用户的总访问次数
-    long visitTimes = statisticalAccessService.countVisitTimes();
     Date occur = new Date();
     
     access.setId(StringUtils.get32UUID());
     access.setNumber((int)count+1);
-    access.setVisitTimes(1);
+    access.setVisitTimes(0);
     //退出的时候记录最后访问时间
     access.setLastVisitTime(occur);
-    if (visitTimes == 0) {
-      access.setLiveness(1);
-    }else {
-      access.setLiveness(1/(int)visitTimes);
-    }
+    access.setLiveness(0);
     access.setCreateTime(occur);
     access.setUpdateTime(occur);
     

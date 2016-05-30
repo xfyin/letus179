@@ -71,7 +71,7 @@ $(function(){
 						target="_top">注册</a></li>
 					<li>
 						<label class="logoutInfo" id="logoutInfo">
-							<a href="${pageContext.request.contextPath }/index.jsp">退出</a>
+							<a href="${pageContext.request.contextPath }/logout/logout.do?username=${username}">退出</a>
 						</label>
 					</li>
 					<li>

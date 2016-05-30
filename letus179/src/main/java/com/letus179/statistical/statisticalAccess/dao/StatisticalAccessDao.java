@@ -9,19 +9,19 @@ package com.letus179.statistical.statisticalAccess.dao;
 
 import com.letus179.commons.entity.Statisticalaccess;
 
-
 /**
  * 用户访问统计dao
  *
  * @author xfyin
  */
 public interface StatisticalAccessDao {
+  
   /**
-   * 根据用户名获取用户访问情况
-   * @param username 用户名
-   * @return 用户访问
+   * 根据uerId获取用户访问情况
+   * @param userId 用户id
+   * @return Statisticalaccess
    */
-  Statisticalaccess getAccessByUsername(String username);
+  Statisticalaccess getAccessByUserId(String userId);
   
   /**
    * 统计总访问次数

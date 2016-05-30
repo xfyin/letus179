@@ -24,7 +24,7 @@ public class Statisticalaccess implements java.io.Serializable {
   
   private Date lastVisitTime;
   
-  private int liveness;
+  private double liveness;
   
   private int number;
   
@@ -45,7 +45,7 @@ public class Statisticalaccess implements java.io.Serializable {
    * @param createTime
    * @param updateTime
    */
-  public Statisticalaccess(String id, User user, int visitTimes, Date lastVisitTime, int liveness,
+  public Statisticalaccess(String id, User user, int visitTimes, Date lastVisitTime, double liveness,
       int number, Date createTime, Date updateTime) {
     super();
     this.id = id;
@@ -117,14 +117,14 @@ public class Statisticalaccess implements java.io.Serializable {
   /**
    * @return liveness
    */
-  public int getLiveness() {
+  public double getLiveness() {
     return liveness;
   }
   
   /**
    * @param liveness set liveness
    */
-  public void setLiveness(int liveness) {
+  public void setLiveness(double liveness) {
     this.liveness = liveness;
   }
   
