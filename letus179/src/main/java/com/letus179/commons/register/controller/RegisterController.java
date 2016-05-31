@@ -17,7 +17,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.letus179.commons.bean.CtResult;
 import com.letus179.commons.entity.Statisticalaccess;
 import com.letus179.commons.entity.User;
 import com.letus179.statistical.statisticalAccess.service.StatisticalAccessService;
@@ -108,4 +110,18 @@ public class RegisterController {
     session.setAttribute("success", "恭喜您，注册成功，让我们一起走吧！");
     return "index";
   }
+  
+  @RequestMapping("/queryUsernamIsExists")
+  public CtResult queryUsernamIsExists(HttpServletRequest request) {
+    String username = request.getParameter("username");
+    User user = userService.getUserByUsername(username);
+    if (user == null) {
+      LS179Logger.info("该用户名可用");
+      return CtResult.success(true);
+    } else {
+      LS179Logger.warn("该用户名已经被占用");
+      return CtResult.success(false);
+    }
+  }
+  
 }

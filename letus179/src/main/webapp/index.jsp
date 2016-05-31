@@ -10,27 +10,15 @@
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
 <meta name="description" content="">
 <meta name="author" content="">
-<%@include file="pages/common/public-statics.jsp"%>
-<link href="${pageContext.request.contextPath}/resources/css/index.css"
-	rel="stylesheet">
 <title>让我们一起走吧-随时随地随心情</title>
+<%@include file="pages/common/public-statics.jsp"%>
+<link href="${pageContext.request.contextPath}/resources/css/index.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath }/resources/js/register.js"></script>
 <script type="text/javascript">
-$(function(){
-		var name = $(".welcomeName").text();
-		if (name.trim() != "") {
-			document.getElementById("welcomeInfo").style.display="block";
-			document.getElementById("loginInfo").style.display="none";
-			document.getElementById("info").style.display="none";
-			document.getElementById("registerInfo").style.display="none";
-			document.getElementById("logoutInfo").style.display="block";
-		}
-	
-	function search() {
-		//检索  ajax	
-		//href="${pageContext.request.contextPath}/search/search.do"
-	}
-	
-});
+function search() {
+	//检索  ajax	
+	//href="${pageContext.request.contextPath}/search/search.do"
+}
 </script>
 </head>
 <body>
@@ -63,75 +51,24 @@ $(function(){
 				<ul class="form-group navbar-form navbar-right">
 					<li id="loginInfo">
 						<button type="button" class="btn btn-primary btn-sm"
-							data-toggle="modal" data-target="#myModal" >登录</button>
+							data-toggle="modal" data-target="#myModal">登录</button>
 					</li>
 					<li id="info"><span>|</span></li>
 					<li class="btn btn-primary btn-sm" id="registerInfo"><a
 						href="${pageContext.request.contextPath }/pages/register.jsp"
 						target="_top">注册</a></li>
-					<li>
-						<label class="logoutInfo" id="logoutInfo">
-							<a href="${pageContext.request.contextPath }/logout/logout.do?username=${username}">退出</a>
-						</label>
-					</li>
-					<li>
-					<label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName">${username}&nbsp;&nbsp;</span></label>
-					</li>
+					<li><label class="logoutInfo" id="logoutInfo"> <a
+							href="${pageContext.request.contextPath }/logout/logout.do?username=${username}">退出</a>
+					</label></li>
+					<li><label class="welcomeInfo" id="welcomeInfo">欢迎您：<span
+							class="welcomeName" id="welcomeName">${username}&nbsp;&nbsp;</span></label></li>
 				</ul>
 			</div>
 		</div>
 		<!--/.navbar-collapse -->
 	</div>
 	</nav>
-
-	<!-- 登录Modal -->
-	<form class="navbar-form navbar-right"
-		action="${pageContext.request.contextPath}/login/autoLogin.do" method="post">
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-			aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content login">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h3 class="modal-title" id="myModalLabel"
-							style="text-align: center; color: #515151">登录</h3>
-					</div>
-					<div class="modal-body">
-						<div class="form-group glyphicon glyphicon-user"
-							style="padding: 25px 0 20px 0;">
-							<input type="text" placeholder="用户名/邮箱/手机号" class="form-control"
-								name="username">
-						</div>
-						<div class="form-group glyphicon glyphicon-lock "
-							style="padding: 20px 0 25px 0">
-							<input type="password" placeholder="请输入密码" class="form-control"
-								name="password">
-						</div>
-						<div class="loginAbout">
-							<div class="nextLogin">
-								<input id="remeberMe" type="checkbox" checked="checked">
-								<label for="remeberMe" class="remeberMe">下次自动登录</label>
-							</div>
-							<div class="forgetPwd">
-								<span><a
-									href="${pageContext.request.contextPath }/forget/forgetPassword.do"
-									target="_blank">记住密码？</a> </span>
-							</div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button style="text-align: center; color: #515151" type="submit"
-							class="btn btn-primary">进入</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-
-
+	<jsp:include page="/pages/common/login.jsp" />
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
@@ -188,4 +125,14 @@ $(function(){
 		<%@ include file="pages/common/footer.jsp"%>
 	</div>
 </body>
+	<script type="text/javascript">
+		var name = $(".welcomeName").text().trim();
+		if (name != "") {
+			document.getElementById("welcomeInfo").style.display = "block";
+			document.getElementById("loginInfo").style.display = "none";
+			document.getElementById("info").style.display = "none";
+			document.getElementById("registerInfo").style.display = "none";
+			document.getElementById("logoutInfo").style.display = "block";
+		}
+</script>
 </html>

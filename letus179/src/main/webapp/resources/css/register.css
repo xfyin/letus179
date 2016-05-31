@@ -273,3 +273,11 @@ form.forgot_password{
 .district {
 	width:100px;
 }
+#regester span .info {
+	display:none;
+	color: red;
+}
+.return_info {
+	padding-left: 10px; 
+	font-size:9px;
+}
