@@ -112,6 +112,7 @@ public class RegisterController {
   }
   
   @RequestMapping("/queryUsernamIsExists")
+  @ResponseBody
   public CtResult queryUsernamIsExists(HttpServletRequest request) {
     String username = request.getParameter("username");
     User user = userService.getUserByUsername(username);

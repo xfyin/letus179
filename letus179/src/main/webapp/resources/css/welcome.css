@@ -1,6 +1,10 @@
+html, body{
+  height: 100%;
+  width: 100%;
+}
 .first {
 	text-align: center;
-	margin-top: 6.5%
+	margin-top: 6%
 }
 .first .name {
 	color:red;
@@ -14,4 +18,23 @@
 	width:95%;
 	text-align: center;
 	margin-bottom: 6.0%;
+	z-index: 100;
+}
+.cntSeparator { display: none; }
+
+.cntDigit {
+  margin-top: 100px !important;
+}
+
+.cntDigit#cnt_0 { margin-left: 30px; }
+.cntDigit#cnt_2 { margin-left: 5px; }
+.cell {
+  display: table-cell;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+#holder {
+  margin: auto;
 }

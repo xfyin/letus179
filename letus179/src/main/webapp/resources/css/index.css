@@ -20,12 +20,12 @@ ul li a {
 }
 
 ul li span {
-	font-size: 20px;
+	font-size: 10px;
 	color: white;
 }
 
 #mySearch {
-	width: 400px;
+	width: 150px;
 }
 
 .navbar-form {
@@ -68,7 +68,7 @@ ul li span {
 	width: 130px
 }
 .form-control-feedback{
-	left:900px;
+	left:650px;
 	margin-top: 10px;
 }
 .remeberMe {
@@ -103,8 +103,8 @@ ul li span {
 	display: none;
 }
 .welcomeName,.welcomeInfo,.logoutInfo  {
-	font-size:12px;
-	padding-top: 5px;
+	font-size:13.5px;
+	padding-top: 15px;
 }
 .welcomeName {
 	color: red;

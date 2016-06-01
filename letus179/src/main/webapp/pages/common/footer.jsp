@@ -9,6 +9,7 @@
 	.foot{
 		float: left;
 		padding-left: 40%;
+		position: relative;
 	}
 	.copyRight {
 		height:29px

@@ -46,7 +46,7 @@ $(function() {
 				type : "get",
 				url : getRootPath()+"/register/queryUsernamIsExists.do",
 				data : {username : $("#username").val()},
-				dateType : "json",
+				dataType : "json",
 				success : function(data) {
 					// data 为true 表明存在
 					if (data.data) {

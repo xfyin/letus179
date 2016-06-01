@@ -23,7 +23,7 @@
 					</p>
 
 					<p>
-						火星不太安全，我可以免费送你回地球
+						火星不太安全，我可以免费送你回地球   biu~biu~biu~ 
 					</p>
 				</div>
 				<a href="${pageContext.request.contextPath }/index.jsp" title="返回Letus179首页">

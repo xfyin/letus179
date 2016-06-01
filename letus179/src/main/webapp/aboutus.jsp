@@ -12,9 +12,18 @@
 <meta name="author" content="">
 <%@include file="pages/common/public-statics.jsp"%>
 <title>关于我们</title>
+<style type="text/css">
+	#nav1 {
+		display: none;
+	}
+	#nav2{
+		display: block;
+	}
+</style>
 </head>
 <body>
-	<div style="">
+	<jsp:include page="/pages/common/nav.jsp" />
+	<div>
 		<%@ include file="pages/common/footer.jsp"%>
 	</div>
 </body>

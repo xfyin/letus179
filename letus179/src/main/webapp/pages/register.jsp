@@ -17,6 +17,14 @@
 <script
 	src="${pageContext.request.contextPath }/resources/js/register.js"></script>
 <title>注册 letus179账号</title>
+<style type="text/css">
+	.foot{
+		margin-top: 70px;
+	}
+	.navbar-right {
+		margin-right:6px;
+	}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">

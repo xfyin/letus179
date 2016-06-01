@@ -11,6 +11,7 @@
 <script src="<%=contextPath%>/resources/js/jquery-1.12.3.min.js"></script>
 <script src="<%=contextPath%>/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="<%=contextPath%>/resources/js/rootpath.js"></script>
+<link href="<%=contextPath%>/resources/css/nav.css" rel="stylesheet"  />
 
 <%-- 
 <script src="<%=contextPath%>/resources/bdp/highchart/exporting.js"></script>
