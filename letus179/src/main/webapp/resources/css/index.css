@@ -1,5 +1,5 @@
 body {
-	padding-top: 50px;
+	/* padding-top: 50px; */
 	padding-bottom: 20px;
 	background-color: #EEE5DE;
 }
@@ -68,8 +68,7 @@ ul li span {
 	width: 130px
 }
 .form-control-feedback{
-	left:650px;
-	margin-top: 10px;
+	left:55px;
 }
 .remeberMe {
 	color: #CDAA7D;

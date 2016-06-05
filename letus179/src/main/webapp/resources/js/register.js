@@ -57,7 +57,7 @@ $(function() {
 						$("#username_info").html("该用户名已经被占用");
 						$("#username_info").css("color","red");
 					}
-						document.getElementById("username_info").style.display="block";
+					document.getElementById("username_info").style.display="block";
 				}
 			});
 	});
@@ -92,6 +92,39 @@ $(function() {
 				$("#from_info").empty();
 				$("#from_info").removeAttr("class","glyphicon glyphicon-remove");
 		});
+		
+		//校验手机号格式
+		$("#phone").blur(function(){
+			$("#phone_info").empty();
+			$("#phone_info").removeAttr("class","glyphicon glyphicon-remove");
+			var phoneNum = document.getElementById("phone").value.trim();
+			if (phoneNum == "") {
+				return;
+			}
+			var phone_vertify = /^((13[0-9])|(15[^4,\\D])|(18[0-9])|(17[0-9])|(14[5,7]))\\d{8}$/;
+			if (!phone_vertify.test(phoneNum)) {
+				$("#phone_info").attr("class","glyphicon glyphicon-remove");
+				$("#phone_info").html("&nbsp;格式不符合规则");
+				$("#phone_info").css({"color":"red"});
+			}
+		});
+		
+		//校验邮箱格式
+		$("#email").blur(function(){
+			$("#email_info").empty();
+			$("#email_info").removeAttr("class","glyphicon glyphicon-remove");
+			var emailNum = document.getElementById("email").value.trim();
+			if (emailNum == "") {
+				return;
+			}
+			var email_vertify = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
+			if (!email_vertify.test(emailNum)) {
+				$("#email_info").attr("class","glyphicon glyphicon-remove");
+				$("#email_info").html("&nbsp;格式不符合规则");
+				$("#email_info").css({"color":"red"});
+			}
+		});
+		
 	});
 	
 	//***********************************************//
@@ -100,8 +133,11 @@ $(function() {
 		$("#pwd_info").empty();
 		$("#pwd_info").removeAttr("class","glyphicon glyphicon-ok");
 		$("#pwd_info").removeAttr("class","glyphicon glyphicon-remove");
-		var pwd = document.getElementById("pwd").value;
-		var reg = /^[A-Za-z0-9]+$/;
+		var pwd = document.getElementById("pwd").value.trim();
+		if (pwd == "") {
+			return;
+		}
+		var reg = /^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
 		if (!reg.test(pwd) || pwd.length<6 || pwd.length>12) {
 			$("#pwd_info").attr("class","glyphicon glyphicon-remove");
 			$("#pwd_info").html("&nbsp;密码必须为6-12位的数字和字母的组合");

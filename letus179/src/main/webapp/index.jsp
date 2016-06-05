@@ -31,7 +31,6 @@ function search() {
 </head>
 <body>
 	<jsp:include page="/pages/common/nav.jsp" />
-	<jsp:include page="/pages/common/login.jsp" />
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">

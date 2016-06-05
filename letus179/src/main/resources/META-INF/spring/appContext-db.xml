@@ -22,7 +22,7 @@
 		</property>
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 	</bean>
-
+	
 	<!--限制文件上传大小 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
@@ -86,5 +86,10 @@
 				<value>classpath:com/letus179/hbm/*.hbm.xml</value>
 			</list>
 		</property>
+		  <property name="packagesToScan">
+      <list>
+        <value>com.letus179.*</value>
+      </list>
+    </property>
 	</bean>
 </beans>

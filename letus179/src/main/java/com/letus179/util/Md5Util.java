@@ -29,7 +29,7 @@ public final class Md5Util {
    * @param salt 盐
    * @return 加密后的字符串
    */
-  public static String md5(String source, Integer salt) {
-    return new Md5Hash(source, ByteSource.Util.bytes(String.valueOf(salt))).toString();
+  public static String md5(String source, String salt) {
+    return new Md5Hash(source, ByteSource.Util.bytes(salt)).toString();
   }
 }

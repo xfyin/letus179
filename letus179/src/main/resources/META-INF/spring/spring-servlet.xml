@@ -13,7 +13,12 @@
 
 	<!-- 扫描spring注解组件 ，包括子集 -->
 	<context:component-scan base-package="com.letus179" />
-
+	
+  <!-- 扫描业务组件,让spring不扫描带有@Service注解的类(留在appContext-db.xml中扫描@Service注解的类),防止事务失效 -->
+  <context:component-scan base-package="com.letus179">
+      <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+  </context:component-scan> 
+    
 	<!-- 支持对象与json的转换。 -->
 	<mvc:annotation-driven />
 	

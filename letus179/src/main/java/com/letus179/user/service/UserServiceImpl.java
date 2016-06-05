@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
       throw new ServiceException(result);
     }
     String pwdDB = user.getPassword();
-    int salt = user.getSalt();
+    String salt = user.getSalt();
     
     if (StringUtils.isBlank(password)) {
       LS179Logger.error("用户输入的密码为空，不符合认证规则");
@@ -114,6 +114,17 @@ public class UserServiceImpl implements UserService {
   @Override
   public long countUser() {
     return userDao.countUser();
+  }
+
+  @Override
+  public User getUserByInfo(String info) {
+    ServiceResult result = new ServiceResult("用户登入认证：用户名||邮箱||手机号");
+    if (StringUtils.isBlank(info)) {
+      LS179Logger.error("登录信息为空");
+      result.setErrorMsg("登录信息为空");
+      throw new ServiceException(result);
+    }
+    return userDao.getUserByInfo(info);
   }
   
 }

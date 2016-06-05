@@ -16,15 +16,21 @@
 		<property name="securityManager" ref="securityManager"></property>
 		<!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
 		<property name="loginUrl" value="/login.jsp" />
-		<!-- 认证成功统一跳转到first.jsp，建议不配置，shiro认证成功自动到上一个请求路径 -->
-		<!-- <property name="successUrl" value="/first.jsp" /> -->
+		<!-- 认证成功统一跳转到/welcome.jsp，若不配置，shiro认证成功自动到上一个请求路径 -->
+		<property name="successUrl" value="/welcome.jsp" />
 		<!-- 通过unauthorizedUrl指定没有权限操作时跳转页面 -->
-		<property name="unauthorizedUrl" value="/refuse.jsp" />
+		<property name="unauthorizedUrl" value="" />
 		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
 		<property name="filterChainDefinitions">
 			<value>
 				<!-- 对静态资源设置匿名访问 -->
 				/resources/** = anon
+				/index.jsp = anon
+				/aboutus.jsp = anon
+				/loginCheck.do = anon
+				/register/register.do = anon
+				/pages/register.jsp = anon
+				/** = authc
 			</value>
 		</property>
 	</bean>
@@ -37,7 +43,7 @@
 	<!-- realm -->
 	<bean id="myRealm" class="com.letus179.commons.shiro.MyRealm">
 		<!-- 将凭证匹配器设置到realm中，realm按照凭证匹配器的要求进行散列 -->
-		<property name="credentialsMatcher" ref="credentialsMatcher" />
+		<!-- <property name="credentialsMatcher" ref="credentialsMatcher" /> -->
 	</bean>
 
 	<!-- 凭证匹配器 -->

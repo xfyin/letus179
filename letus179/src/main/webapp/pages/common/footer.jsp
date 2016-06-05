@@ -6,10 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>页脚</title>
 <style type="text/css">
-	.foot{
-		float: left;
-		padding-left: 40%;
-		position: relative;
+	.footer{
+		height:60px;
+		bottom:0; 
+		margin-top:4%;
+		margin-bottom:15px;
+		float: right;
+		margin-right:45%;
 	}
 	.copyRight {
 		height:29px
@@ -17,7 +20,7 @@
 </style>
 </head>
 <body>
-	<div class="foot">
+	<div class="footer">
 		<table >
 			<tbody>
 				<tr>

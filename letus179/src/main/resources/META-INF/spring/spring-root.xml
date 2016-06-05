@@ -11,8 +11,9 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<import resource="classpath:META-INF/spring/appContext-db.xml"></import>
 	<import resource="classpath:META-INF/spring/appContext-shiro.xml"></import>
+	<import resource="classpath:META-INF/spring/spring-servlet.xml"></import>
+	<import resource="classpath:META-INF/spring/appContext-db.xml"></import>
 	<import resource="classpath:META-INF/spring/appContext-transaction.xml"></import>
 	<import resource="classpath:META-INF/spring/appContext-lucene.xml"></import>
 	<import resource="classpath:META-INF/spring/appContext-dao.xml"></import>

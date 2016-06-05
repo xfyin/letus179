@@ -5,7 +5,7 @@
  * Date：2016-5-25 下午5:23:24
  * Copyright (C) 2016-2016 letus179-Copyright
  */
-package com.letus179.commons.index;
+package com.letus179.commons.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.letus179.user.bean.ActiveUser;
+import com.letus179.util.WebUtils;
 
 /**
  * 首页/欢迎页面
@@ -29,17 +30,9 @@ public class IndexController {
   //系统首页
   @RequestMapping("/index")
   public String index(HttpServletRequest request,Model model) {
-    /*Subject subject = SecurityUtils.getSubject();
-    ActiveUser user = (ActiveUser) subject.getPrincipal();*/
-    /*model.addAttribute("user", user);*/
-    String username = request.getParameter("username");
-    model.addAttribute("username", username);
+    Object userinfo = WebUtils.getCurrentUserInfo();
+    model.addAttribute("activeUser", userinfo);
     return "index";
   }
   
-  //欢迎页面
-  @RequestMapping("/welcome")
-  public String welcome(Model model) {
-    return "welcome";
-  }
 }

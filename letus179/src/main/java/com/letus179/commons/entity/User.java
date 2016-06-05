@@ -22,7 +22,7 @@ public class User implements java.io.Serializable {
   
   private String password;
   
-  private int salt;
+  private String salt;
   
   private int locked;
   
@@ -63,7 +63,7 @@ public class User implements java.io.Serializable {
   public User() {
   }
   
-  public User(String id, String realName, String password, int salt, int locked) {
+  public User(String id, String realName, String password, String salt, int locked) {
     this.id = id;
     this.realName = realName;
     this.password = password;
@@ -96,7 +96,7 @@ public class User implements java.io.Serializable {
    * @param city
    * @param district
    */
-  public User(String id, String realName, String username, String password, int salt, int locked,
+  public User(String id, String realName, String username, String password, String salt, int locked,
       Integer age, Integer loveStatus, Integer gender, String signature, String idCard,
       String phone, String email, String headUrl, Date birthday, Integer isPhoneVerify,
       Integer degreeType, Date createTime, Date updateTime, String province, String city,
@@ -164,11 +164,11 @@ public class User implements java.io.Serializable {
     this.password = password;
   }
   
-  public int getSalt() {
+  public String getSalt() {
     return this.salt;
   }
   
-  public void setSalt(int salt) {
+  public void setSalt(String salt) {
     this.salt = salt;
   }
   

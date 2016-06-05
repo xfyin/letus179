@@ -50,4 +50,10 @@ public interface UserService {
    */
   long countUser();
   
+  /**
+   * 根据info获取登录信息
+   * @param info username||phone||email
+   * @return User
+   */
+  User getUserByInfo(String info);
 }

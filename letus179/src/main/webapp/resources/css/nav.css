@@ -1,14 +1,44 @@
-.navbar-form {
-	margin-left: -12px
+.navbar navbar-inverse navbar-fixed-top {
+	width:100%;
 }
-
+.navbar-header {
+	width:40%;
+}
+.container-fluid > .navbar-collapse, .container-fluid > .navbar-header {
+	margin-left: 180px
+}
+.navbar-brand {
+	width:50%	
+}
+.navbar-form navbar-left {
+	width:60%
+}
+.col-lg-2 {
+	width:19%;
+	float: left;
+}
+.col-lg-6 {
+	width:75%;
+	float: left;
+	padding-left: 7px
+}
+.head_div {
+	float: left;
+}
+.head_div a{
+	width:75%;
+}
+.navbar-form {
+	margin-left: -6%;
+	
+}
 .navbar-right {
-	margin-right: 260px;
+	margin-right: 15.79%;
 }
 
 .navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand
 	{
-	margin-left: 240px;
+	margin-left: 25%;
 }
 
 .dropdown-menu li {
@@ -16,7 +46,7 @@
 }
 
 .dropdown-menu {
-	min-width: 80px;
+	min-width: 4.86%;
 }
 
 #searchInfo {
@@ -29,4 +59,7 @@
 
 #aboutusInfo {
 	font-size: 15px;
+}
+.navbar navbar-inverse navbar-fixed-top {
+	width:95%;!important
 }

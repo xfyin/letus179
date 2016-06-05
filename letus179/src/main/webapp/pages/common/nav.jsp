@@ -19,7 +19,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid" id="nav1">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">让我们一起走吧</a>
+    	<div class="head_div">
+      	<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">让我们一起走吧</a>
+      </div>
+      <div class="head_div">
     	<form class="navbar-form navbar-left" role="search">
     		<div class="col-lg-2">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">主题 <span class="caret"></span></button>
@@ -38,6 +41,7 @@
 			    </div> 
 			  </div> 
       </form>
+      </div>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
@@ -51,6 +55,15 @@
           </ul>
         </li>
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图片 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">趣图</a></li>
+            <li><a href="#">动图</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">最新</a></li>
@@ -59,19 +72,20 @@
             <li><a href="#">我的</a></li>
           </ul>
         </li>
+				<li id="mySpaceInfo"><a  href="${pageContext.request.contextPath }/userroom/main.do?realname=${activeUser.realname}"><label class="mySpace" id="mySpace">我的空间</label></a></li>
 				<li id="aboutusInfo"><a  href="${pageContext.request.contextPath }/aboutus.jsp"><label class="aboutus" id="aboutus">关于我们</label></a></li>
-        <li id="loginInfo"><a data-toggle="modal" data-target="#myModal">登录</a></li>
+        <li id="loginInfo"><a data-toggle="modal" href="${pageContext.request.contextPath }/login/main.do">登录</a></li>
         <li id="info"><span>|</span></li>
 				<li id="registerInfo"><a href="${pageContext.request.contextPath }/pages/register.jsp" target="_top">注册</a></li>
-				<li><label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName" id="welcomeName">${username}&nbsp;&nbsp;</span></label></li>
-				<li><label class="logoutInfo" id="logoutInfo"> <a href="${pageContext.request.contextPath }/logout/logout.do?username=${username}">[退出]</a></label></li>
+				<li><label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName" id="welcomeName">${activeUser.realname}&nbsp;</span></label></li>
+				<li><label class="logoutInfo" id="logoutInfo"> <a href="${pageContext.request.contextPath }/logout/logout.do?realname=${activeUser.realname}&nbsp;&nbsp;">[退出]</a></label></li>
       </ul>
     </div>
   </div>
 	<!-- 两种导航栏，分界线 -->
   <div class="container-fluid" id="nav2">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">让我们一起走吧</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">让我们一起走吧</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
@@ -80,6 +94,15 @@
           <ul class="dropdown-menu">
             <li><a href="#">最新</a></li>
             <li><a href="#">最热</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图片 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">趣图</a></li>
+            <li><a href="#">动图</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">我的</a></li>
           </ul>
@@ -93,8 +116,9 @@
             <li><a href="#">我的</a></li>
           </ul>
         </li>
+        <li id="mySpaceInfo"><a  href="${pageContext.request.contextPath }/userroom/main.do?realname=${activeUser.realname}"><label class="mySpace" id="mySpace">我的空间</label></a></li>
 				<li id="aboutusInfo"><a  href="${pageContext.request.contextPath }/aboutus.jsp"><label class="aboutus" id="aboutus">关于我们</label></a></li>
-				<li><label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName" id="welcomeName">${username}&nbsp;&nbsp;</span></label></li>
+				<li><label class="welcomeInfo" id="welcomeInfo">欢迎您：<span class="welcomeName" id="welcomeName">${activeUser.realname}&nbsp;</span></label></li>
       </ul>
     </div>
   </div>

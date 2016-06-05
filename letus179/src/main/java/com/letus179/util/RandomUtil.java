@@ -27,11 +27,11 @@ public final class RandomUtil {
    * @param end 上限
    * @return 随机数
    */
-  public static int getSalt(int from, int end) {
+  public static String getSalt(int from, int end) {
     int number = 0;
     for (int i = from; i <= end; i++) {
       number = (int) (Math.random() * i + 1);
     }
-    return number;
+    return String.valueOf(number);
   }
 }

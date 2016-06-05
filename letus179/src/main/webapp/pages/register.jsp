@@ -16,11 +16,14 @@
 	src="${pageContext.request.contextPath }/resources/js/procitydis.js"></script>
 <script
 	src="${pageContext.request.contextPath }/resources/js/register.js"></script>
-<title>注册 letus179账号</title>
-<style type="text/css">
-	.foot{
-		margin-top: 70px;
+<title>注册 letus179账号</title><script type="text/javascript">
+	var msg = "${success}".trim();
+	if (msg != "") {
+		alert(msg);
+		location.href = "${pageContext.request.contextPath }/login.jsp";
 	}
+</script>
+<style type="text/css">
 	.navbar-right {
 		margin-right:6px;
 	}
@@ -44,7 +47,7 @@
 			<div>
 				<ul class="form-group navbar-form navbar-right">
 					<li><span style="font-size: 10px">已有账号？</span> <a
-						data-toggle="modal" data-target="#myModal"
+						data-toggle="modal" href="${pageContext.request.contextPath }/login.jsp"
 						class="glyphicon glyphicon-hand-right">&nbsp;登录</a></li>
 				</ul>
 			</div>
@@ -52,10 +55,8 @@
 		<!--/.navbar-collapse -->
 	</div>
 	</nav>
-	 <!-- 登录Modal -->
-	<jsp:include page="/pages/common/login.jsp" />
 
-	<div style="float: left; width: 95%; height: 600px;">
+	<div style="float: left; width: 95%; height: 600px;margin-top: 82px">
 		<div class="regeste0">
 			<!-- 宣传图片 -->
 			<img alt=""
@@ -127,13 +128,13 @@
 							<td class="reg">Email</td>
 							<td class="reg_put"><input type="text" id="email"
 								name="email"></td>
-							<td><span class="info"></span></td>
+							<td><span class="info" id="email_info"></span></td>
 						</tr>
 						<tr>
 							<td class="reg">手机号</td>
 							<td class="reg_put"><input type="text" id="phone"
 								name="phone"></td>
-							<td><span class="info"></span></td>
+							<td><span class="info" id="phone_info"></span></td>
 						</tr>
 					</table>
 					<div class="reg_bottom">
@@ -144,8 +145,6 @@
 			</div>
 		</div>
 	</div>
-	<div>
 		<jsp:include page="/pages/common/footer.jsp" />
-	</div>
 </body>
 </html>

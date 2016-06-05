@@ -22,9 +22,19 @@ public class ActiveUser implements Serializable {
   private static final long serialVersionUID = 1L;
   
   /**
+   * 用户id
+   */
+  private String userId;
+  
+  /**
    * 用户
    */
   private String username;
+  
+  /**
+   * 真实姓名
+   */
+  private String realname;
   
   /**
    * 性别
@@ -57,6 +67,34 @@ public class ActiveUser implements Serializable {
    */
   public void setGender(String gender) {
     this.gender = gender;
+  }
+  
+  /**
+   * @return userId
+   */
+  public String getUserId() {
+    return userId;
+  }
+  
+  /**
+   * @param userId set userId
+   */
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+  
+  /**
+   * @return realname
+   */
+  public String getRealname() {
+    return realname;
+  }
+  
+  /**
+   * @param realname set realname
+   */
+  public void setRealname(String realname) {
+    this.realname = realname;
   }
   
 }

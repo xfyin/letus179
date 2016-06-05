@@ -19,81 +19,69 @@
 <title>欢迎来到 ——让我们一起走吧</title>
 <script type="text/javascript">
 	$(function() {
-		$(".digits").countdown({
+		$(".digits")
+				.countdown(
+						{
 							image : "${pageContext.request.contextPath }/resources/images/cutdown.png",
 							format : "s",
 							startTime : "5"
 						});
-			});
+	});
 	var second = 6;
 	function calc() {
 		if (second > 0) {
 			second--;
-			document.getElementById("times").innerHTML = second; 
+			/* document.getElementById("times").innerHTML = second;  */
 		} else {
-			location.href = "${pageContext.request.contextPath }/index/index.do?username=${user.username}";
+			location.href = "${pageContext.request.contextPath }/index/index.do?realname=${activeUser.realname }";
 		}
 		setTimeout('calc()', 1000);
-	} 
+	}
 </script>
 <style type="text/css">
-	.digits {
-		position: absolute;
-		margin-bottom: 40px;
-	}
 
-#cnt_0.cntDigit {
-	margin-left:-41px;
-	margin-top:-2px!important;
-}
-	.foot{
-		float: left;
-		padding-left: 40%;
-		position: relative;
-	  margin-top: 140px
-	}
-	.copyRight {
-		height:29px
-	}
-	#nav1 {
-		display: none;
-	}
-	#nav2{
-		display: block;
-	}
 </style>
 </head>
-<body  onload="calc();">
-	<jsp:include page="/pages/common/nav.jsp" />	
-	<div class="first">
-		欢迎归来： <span class="name">${user.username }</span>&nbsp;${user.gender},
-		<a
-			href="${pageContext.request.contextPath }/index/index.do?username=${user.username}">让我们一起走吧!</a>
-		倒计时:<span id="times"></span> <br><br><span class="digits"></span> <br><br><br><br>
-		<br>跳转...或者直接点击 <a
-			href="${pageContext.request.contextPath }/index/index.do?username=${user.username}">进入</a>
-	</div>
-
-	<div class="second">
-		<img alt="welcome"d
-			src="${pageContext.request.contextPath }/resources/images/welcome.jpg">
-	</div>
-	<div>
+<body onload="calc();">
+	<jsp:include page="/pages/common/nav.jsp" />
+	<div class="container">
+		<div class="all">
+			<div class="first">
+				<div class="first_1">
+					欢迎归来： <span class="name">${activeUser.realname }</span>&nbsp;${activeUser.gender},
+					<a href="${pageContext.request.contextPath }/index/index.do">让我们一起走吧!</a>
+					倒计时:
+				</div>
+				<div class="first_2">
+					<span id="times"></span> <br> <br> <span class="digits"></span>
+					<br> <br> <br> <br> <br>
+				</div>
+				<div class="first_3">
+					s&nbsp;跳转...或者直接点击 <a
+						href="${pageContext.request.contextPath }/index/index.do">进入</a>
+				</div>
+			</div>
+		
+			<div class="second">
+				<img alt="welcome" d
+					src="${pageContext.request.contextPath }/resources/images/welcome.jpg">
+			</div>
+		</div>
 		<div class="foot">
-		<table >
-			<tbody>
-				<tr>
-					<td>&copy; Letus179| <a
-						href="${pageContext.request.contextPath}/aboutus.jsp">关于我们</a> | <a
-						href="mailto:xfyin179@163.com">广告联系</a> | <a target="_blank"
-						href="https://github.com/xfyin/letus179">@github</a>
-					</td>
-				</tr>
-				<tr class="copyRight" style="text-align: center;">
-					<td>letus179.com 版权信息  2016</td>
-				</tr>
-			</tbody>
-		</table>
+			<table>
+				<tbody>
+					<tr>
+						<td>&copy; Letus179| <a
+							href="${pageContext.request.contextPath}/aboutus.jsp">关于我们</a> |
+							<a href="mailto:xfyin179@163.com">广告联系</a> | <a target="_blank"
+							href="https://github.com/xfyin/letus179">@github</a>
+						</td>
+					</tr>
+					<tr class="copyRight" style="text-align: center;">
+						<td>letus179.com 版权信息 2016</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </body>

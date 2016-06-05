@@ -24,7 +24,7 @@
                 <comment>&#195;&#220;&#194;&#235;</comment>
             </column>
         </property>
-        <property name="salt" type="int">
+        <property name="salt" type="string">
             <column name="salt" not-null="true">
                 <comment>&#209;&#206;&#163;&#168;&#195;&#220;&#194;&#235;&#188;&#211;&#195;&#220;&#163;&#169;</comment>
             </column>

@@ -5,7 +5,7 @@
  * Date：2016-5-28 下午3:27:57
  * Copyright (C) 2016-2016 letus179-Copyright
  */
-package com.letus179.commons.register.controller;
+package com.letus179.commons.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -83,7 +83,7 @@ public class RegisterController {
     user.setRealName(realName);
     user.setUsername(username);
     user.setGender(Integer.valueOf(gender));
-    int salt = RandomUtil.getSalt(1, 10000);
+    String salt = RandomUtil.getSalt(1, 10000);
     user.setSalt(salt);
     user.setPassword(Md5Util.md5(password, salt));
     user.setPhone(phoneNum);
@@ -107,8 +107,8 @@ public class RegisterController {
     access.setUser(user);
     statisticalAccessService.saveAccess(access);
     HttpSession session = request.getSession();
-    session.setAttribute("success", "恭喜您，注册成功，让我们一起走吧！");
-    return "index";
+    session.setAttribute("success", "恭喜您，注册成功，请先登录！");
+    return "/pages/register";
   }
   
   @RequestMapping("/queryUsernamIsExists")

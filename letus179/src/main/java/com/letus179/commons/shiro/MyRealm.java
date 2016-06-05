@@ -17,18 +17,21 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.letus179.commons.dao.ServiceResult;
 import com.letus179.commons.entity.User;
 import com.letus179.user.bean.ActiveUser;
 import com.letus179.user.service.UserService;
 import com.letus179.util.LS179Logger;
+import com.letus179.util.Md5Util;
 
 /**
  * 自定义realm
  * 
  * @author xfyin
  */
+@Service("myRealm")
 public class MyRealm extends AuthorizingRealm {
   
   @Autowired
@@ -42,23 +45,39 @@ public class MyRealm extends AuthorizingRealm {
   @Override
   protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
       throws AuthenticationException {
-    ServiceResult result = new ServiceResult("用户认证中...");
     UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
     String username = token.getUsername();
+    String pwd = String.valueOf(token.getPassword());
     User user = userService.getUserByUsername(username);
     if (user == null) {
       LS179Logger.error("用户：" + username + " 的用户信息不存在");
-      result.setErrorMsg("用户：" + username + " 的用户信息不存在");
-      throw new RuntimeException();
+      throw new AuthenticationException("用户：" + username + " 的用户信息不存在");
     }
     //数据库中的password
     String password = user.getPassword();
-    int salt = user.getSalt();
+    String salt = user.getSalt();
+    
+    String md5Pwd = Md5Util.md5(pwd, salt);
+    if (!md5Pwd.equals(password)) {
+      LS179Logger.error("用户登录信息不正确");
+      throw new AuthenticationException("用户名或密码不正确");
+    }
+    
     ActiveUser activeUser = new ActiveUser();
-    
+    activeUser.setUserId(user.getId());
     activeUser.setUsername(username);
-    
-    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activeUser, password,
+    activeUser.setRealname(user.getRealName());
+    int gender = user.getGender();
+    String sex = "";
+    if (gender == 1) {
+      sex = "先生";
+    }else if (gender == 0) {
+      sex = "女士";
+    } else {
+      sex = "同志";
+    }
+    activeUser.setGender(sex);
+    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activeUser, pwd,
         ByteSource.Util.bytes(salt), getName());
     
     return info;

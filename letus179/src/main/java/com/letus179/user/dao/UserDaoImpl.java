@@ -52,8 +52,7 @@ public class UserDaoImpl implements UserDao {
   @Override
   public User getUserByUsername(String username) {
     String hql = "from User where username = :username";
-    return (User) commonDaoSupport.getSession().createQuery(hql).setString("username", username)
-        .uniqueResult();
+    return (User) commonDaoSupport.getSession().createQuery(hql).setString("username", username).uniqueResult();
   }
   
   @Override
@@ -65,6 +64,12 @@ public class UserDaoImpl implements UserDao {
   public long countUser() {
     String hql = "select count(*) from User";
     return (long) commonDaoSupport.getSession().createQuery(hql).uniqueResult();
+  }
+
+  @Override
+  public User getUserByInfo(String info) {
+    String hql = "FROM User WHERE username =:info OR phone =:info OR email =:info";
+    return (User) commonDaoSupport.getSession().createQuery(hql).setString("info", info).uniqueResult();
   }
   
 }
