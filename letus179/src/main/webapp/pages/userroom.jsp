@@ -9,7 +9,7 @@
 		<meta name="description" content="Multi-Level Push Menu: Off-screen navigation with multiple levels" />
 		<meta name="keywords" content="multi-level, menu, navigation, off-canvas, off-screen, mobile, levels, nested, transform" />
 		<meta name="author" content="Codrops" />
-		<%@include file="/pages/common/public-statics.jsp"%>
+		<%@include file="common/public-statics.jsp"%>
 		<script src="${pageContext.request.contextPath }/resources/js/classie.js"></script>
 		<script src="${pageContext.request.contextPath }/resources/js/modernizr.custom.js"></script>
 		<script src="${pageContext.request.contextPath }/resources/js/mlpushmenu.js"></script>
@@ -21,6 +21,12 @@
 		<style type="text/css">
 			#nav1{
 				display: none;
+			}
+			#nav2{
+				display: none;
+			}
+			#nav3{
+				display: block;
 			}
 			.container {
 				height:110%;

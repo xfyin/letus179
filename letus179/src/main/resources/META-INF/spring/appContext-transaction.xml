@@ -35,6 +35,13 @@
 	 	</tx:attributes>
 	 </tx:advice>
 	 
+	 <!-- 开启aop,对类代理 -->
+	 <aop:config proxy-target-class="true"/>
+	 <!-- 开启shiro注解支持 -->
+	 <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+	 		<property name="securityManager" ref="securityManager"/>
+	 </bean>
+	 
 	 <!-- 上面的通知配置只配置了向哪些方法切入什么事务类型,但是没有配置包和类,
 	 	    接下来配置切面表达式,格式  [访问修饰符] 返回类型  [包.]类.方法(参数) 
 	  -->

@@ -7,15 +7,22 @@
  */
 package com.letus179.commons.shiro;
 
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.mgt.SessionManager;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,22 +54,13 @@ public class MyRealm extends AuthorizingRealm {
       throws AuthenticationException {
     UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
     String username = token.getUsername();
-    String pwd = String.valueOf(token.getPassword());
     User user = userService.getUserByUsername(username);
     if (user == null) {
-      LS179Logger.error("用户：" + username + " 的用户信息不存在");
-      throw new AuthenticationException("用户：" + username + " 的用户信息不存在");
+      return null;
     }
     //数据库中的password
     String password = user.getPassword();
     String salt = user.getSalt();
-    
-    String md5Pwd = Md5Util.md5(pwd, salt);
-    if (!md5Pwd.equals(password)) {
-      LS179Logger.error("用户登录信息不正确");
-      throw new AuthenticationException("用户名或密码不正确");
-    }
-    
     ActiveUser activeUser = new ActiveUser();
     activeUser.setUserId(user.getId());
     activeUser.setUsername(username);
@@ -77,7 +75,7 @@ public class MyRealm extends AuthorizingRealm {
       sex = "同志";
     }
     activeUser.setGender(sex);
-    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activeUser, pwd,
+    SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(activeUser, password,
         ByteSource.Util.bytes(salt), getName());
     
     return info;
@@ -85,10 +83,16 @@ public class MyRealm extends AuthorizingRealm {
   
   @Override
   protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-    principals.getPrimaryPrincipal();
-    // TODO Auto-generated method stub
+    ActiveUser activeUser = (ActiveUser) principals.getPrimaryPrincipal();
     return null;
   }
   
-  
+  /**
+   * 清空缓存
+   * 修改了用户的权限，而用户并不立即退出系统，就调用此方法手动清空缓存
+   */
+  public void clearCached() {
+    PrincipalCollection principals =  SecurityUtils.getSubject().getPrincipals();
+    super.clearCache(principals);
+  }
 }

@@ -20,6 +20,11 @@
 		<property name="successUrl" value="/welcome.jsp" />
 		<!-- 通过unauthorizedUrl指定没有权限操作时跳转页面 -->
 		<property name="unauthorizedUrl" value="" />
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="myFormAuthenticationFilter"></entry>
+			</map>
+		</property>
 		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
 		<property name="filterChainDefinitions">
 			<value>
@@ -30,6 +35,7 @@
 				/loginCheck.do = anon
 				/register/register.do = anon
 				/pages/register.jsp = anon
+				
 				/** = authc
 			</value>
 		</property>
@@ -38,12 +44,15 @@
 	<!-- securityManager安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="myRealm" />
+		<property name="cacheManager" ref="cacheManager"/>
+		<property name="sessionManager" ref="sessionManager"/>
+		<property name="rememberMeManager" ref="rememberMeManager"/>
 	</bean>
 
-	<!-- realm -->
+	<!-- 自定义 realm -->
 	<bean id="myRealm" class="com.letus179.commons.shiro.MyRealm">
 		<!-- 将凭证匹配器设置到realm中，realm按照凭证匹配器的要求进行散列 -->
-		<!-- <property name="credentialsMatcher" ref="credentialsMatcher" /> -->
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
 	</bean>
 
 	<!-- 凭证匹配器 -->
@@ -52,4 +61,32 @@
 		<property name="hashAlgorithmName" value="md5" />
 		<property name="hashIterations" value="1" />
 	</bean>
+	
+	<!-- 缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager" p:cacheManager-ref="ehcache"/>
+	<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"     
+	  p:configLocation="classpath:/META-INF/spring/shiro-ehcache.xml"   p:shared="true"/> 	
+	  
+	<!-- 会话管理器 -->
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="600000"/>
+		<property name="deleteInvalidSessions" value="true"/>
+	</bean>
+	
+	<!-- rememberMeManager管理器 ，写cookie，取cookie生成用户信息-->
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">
+		<property name="cookie" ref="rememberMeCookie"/>
+	</bean>
+	
+	<!-- 记住我 cookie -->
+	<bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg value="rememberMe"/>
+		<!-- 记住我 cookie生效时间 ,7天-->
+		<property name="maxAge" value="604800"/>
+	</bean>
+	
+	<bean id="myFormAuthenticationFilter" class="com.letus179.commons.shiro.MyFormAuthenticationFilter">
+		<property name="rememberMeParam" value="rememberMe"/>
+	</bean>
+	
 </beans>

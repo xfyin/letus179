@@ -21,6 +21,9 @@
 	#nav2{
 		display: none;
 	}
+	#nav3{
+		display: none;
+	}
 </style>
 <script type="text/javascript">
 function search() {

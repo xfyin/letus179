@@ -60,29 +60,6 @@ public class LoginController {
   public String main() {
     return "login";
   }
-/*  
-  @RequestMapping("/login")
-  public String loginFailure(HttpServletRequest request) throws Exception {
-    //若登录失败，从request中获取认证异常信息，shiroLoginFailure就是shiro异常类的全限定名
-    String exceptionClassName = (String) request.getAttribute("shiroLoginFailure");
-    if (StringUtils.isNotBlank(exceptionClassName)) {
-      if (UnknownAccountException.class.getName().equals(exceptionClassName)) {
-        LS179Logger.warn("账号不存在");
-        throw new ServiceException(new ServiceResult("账号不存在"));
-      }
-      else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
-        LS179Logger.warn("用户名或密码错误");
-        throw new ServiceException(new ServiceResult("用户名或密码错误"));
-      }
-      else {
-        LS179Logger.warn("unknow error!");
-        throw new Exception("unknow error!");
-      }
-    }
-    //此方法不处理登录成功，shiro认证成功将自动跳到上一个请求路径
-    //若登录失败，跳回login页面
-    return "login";
-  }*/
   
   /**
    * 用户登录
@@ -96,25 +73,22 @@ public class LoginController {
     String username = request.getParameter("username");
     String password = request.getParameter("password");
     UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-    token.setRememberMe(false);
-    //userInfo 或者为username||phone||email
-    String userInfo = token.getUsername();
-    String realName = "";
-    try {
-      realName = userService.getUserByInfo(userInfo).getRealName();
-    }
-    catch (Exception e) {
-      
-      LS179Logger.error(e.getMessage());
-      return "redirect:main.do";
-    }
-    request.getSession().setAttribute("realname", realName);
+    token.setRememberMe(true);
     Subject currentUser = SecurityUtils.getSubject();
     try {
-      currentUser.login(token);
+        currentUser.login(token);
     }
-    catch (AuthenticationException e) {
-      model.addAttribute("Msg", e.getMessage());
+    catch (UnknownAccountException e) {
+      LS179Logger.warn("账号不存在" + e);
+      model.addAttribute("Msg", "账号不存在");
+      return "login";
+    }catch (IncorrectCredentialsException e1) {
+      LS179Logger.warn("用户名或密码错误" + e1);
+      model.addAttribute("Msg", "用户名或密码错误");
+      return "login";
+    }catch (AuthenticationException e2) {
+      LS179Logger.warn("用户名或密码错误" + e2);
+      model.addAttribute("Msg", "用户名或密码错误");
       return "login";
     }
     return "redirect:welcome.do";

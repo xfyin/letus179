@@ -19,12 +19,17 @@
 	#nav2{
 		display: block;
 	}
+	#nav3{
+		display: none;
+	}
 </style>
 </head>
 <body>
+	<div class="container">
 	<jsp:include page="/pages/common/nav.jsp" />
 	<div>
 		<%@ include file="pages/common/footer.jsp"%>
+	</div>
 	</div>
 </body>
 </html>

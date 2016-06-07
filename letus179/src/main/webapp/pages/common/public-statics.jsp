@@ -13,4 +13,4 @@
 <script src="<%=contextPath%>/resources/js/rootpath.js"></script>
 <link href="<%=contextPath%>/resources/css/nav.css" rel="stylesheet"/>
 
-<%-- 菜单css,js--%>
+<script src="<%=contextPath%>/resources/js/commons-operate.js"></script>

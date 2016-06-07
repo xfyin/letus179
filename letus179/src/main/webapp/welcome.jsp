@@ -39,7 +39,9 @@
 	}
 </script>
 <style type="text/css">
-
+	#nav3{
+		display: none;
+	}
 </style>
 </head>
 <body onload="calc();">

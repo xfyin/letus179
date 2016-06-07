@@ -20,7 +20,7 @@
   <div class="container-fluid" id="nav1">
     <div class="navbar-header">
     	<div class="head_div">
-      	<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">让我们一起走吧</a>
+      	<a class="navbar-brand" href="${pageContext.request.contextPath }/index/index.do">让我们一起走吧</a>
       </div>
       <div class="head_div">
     	<form class="navbar-form navbar-left" role="search">
@@ -82,10 +82,10 @@
       </ul>
     </div>
   </div>
-	<!-- 两种导航栏，分界线 -->
+	<!-- 2导航栏，分界线 -->
   <div class="container-fluid" id="nav2">
     <div class="navbar-header">
-      <a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">让我们一起走吧</a>
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/index/index.do">让我们一起走吧</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
@@ -122,6 +122,94 @@
       </ul>
     </div>
   </div>
+  <!--  3导航栏，分界线 -->
+  <div class="container-fluid" id="nav3">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/index/index.do">让我们一起走吧</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">视频 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">最新</a></li>
+            <li><a href="#">最热</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">图片 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">趣图</a></li>
+            <li><a href="#">动图</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">最新</a></li>
+            <li><a href="#">最热</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">我的</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">设置 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+				    <li><a href="#" data-toggle="modal" data-target="#myModalPwd">修改密码</a></li>
+				    <li><a href="#" data-toggle="modal" data-target="#myModalInfo">修改基本信息</a></li>
+          </ul>
+        </li>
+				<li id="aboutusInfo"><a  href="${pageContext.request.contextPath }/aboutus.jsp"><label class="aboutus" id="aboutus">关于我们</label></a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
+
+<!-- 修改密码 Modal -->
+<div class="modal fade" id="#myModalPwd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改密码</h4>
+      </div>
+     	<form action="${pageContext.request.contextPath }/userInfo/modifyPwd.do" method="post">
+	      <div class="modal-body">
+	       		原密码：<input type="password" name="old_pwd"><br>
+	       		新密码：<input type="password" name="new_pwd"><br>
+	       		确认新密码：<input type="password" name="new_pwd"><br>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <input type="submit" value="保存">
+	      </div>
+     	</form>
+    </div>
+  </div>
+</div>
+
+<!--修改基本信息 Modal -->
+<div class="modal fade" id="#myModalInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">修改基本信息</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

@@ -45,7 +45,4 @@ public class MyShiroFilter extends DelegatingFilterProxy{
     }
     super.doFilter(request , response, chain);
   }
-  
-  
-  
 }
